@@ -1,0 +1,62 @@
+PSEUDO-CODE
+1. Setiap role akan memiliki tabel chain sendiri, dan memiliki beberapa value wajib untuk processing dan ditampilkan pada  data histori
+2. autentikasi dilakukan dalam local database (sql)
+3. setiap role memilii 3 action,    1. Input chain  
+                                    2. Get chain detail (by chain id)
+                                    3. Get all (by history id)
+4. Value wajib setiap chain:    -chain id           (menggabung semua chain dari beberapa tabel)
+                                -history id         (mengurutkan history tabel sebagai userview)
+                                -chain maker name   (nama pembuat chain/yang melakukan scan)
+                                -chain maker roles  (roles pembuat chain)
+                                -date               (tanggal chain dibuat)
+                                -action             (nama action chain)
+                                -location           (lokasi chain dilakukan GPS)
+                                -curent temperature (suhu saat chain di input)
+
+5. Roles Catalog:
+    Designer    :   -value wajib
+                    -komposisi
+                    -draft keberapa
+                    -development team (anggota)
+                    -deskripsi chain 
+                    -badan yang membawahi
+
+    Regulator   :   -value wajib
+                    -negara
+                    -badan regulasi (ex: WHO)
+                    -approved or not
+                    -deskripsi chain
+                    -jenis vaksin
+
+    Manufacture :   -nama perusahaan
+                    -deskripsi chain
+                    -alamat pabrik
+                    -jenis vaksin
+
+    Distributor :   -nama perusahaan
+                    -alamat distributor 
+                    -deskripsi chain
+                    -jenis vaksin
+
+    Hospital    :   -Alamat Hospital
+                    -Deskripsi chain
+                    -Jenis valsin
+                            
+
+
+    struct [[eosio::table]] desainerChain {
+        uint64_t historyId;
+        uint64_t chainId;
+        string name;
+        string roles;
+        string date;
+        string action;
+        string location;
+        string temp;
+        string composition;
+        uint64_t draft;
+        string devTeam;
+        string instance;
+        string description;
+        auto primary_key()const { return historyId;}
+    };
