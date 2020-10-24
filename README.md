@@ -1,1 +1,3 @@
-# jakbee_covchain
+# Covchain App
+
+## Prerequisite 
